@@ -50,8 +50,9 @@
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-md-10 col-lg-8 col-xl-7">
                     <!-- Post preview-->
+                    {{#posts}}
                     <div class="post-preview">
-                        {{#posts}}
+
                         <a href="post.html">
                             <h2 class="post-title">{{title}}</h2>
                             <h3 class="post-subtitle">{{content}}</h3>
@@ -62,8 +63,8 @@
                             {{username}}
                         </p>
                     </div>
-                        {{/posts}}
                     <!-- Divider-->
+                    {{/posts}}
                     <hr class="my-4" />
                     <!-- Post preview-->
     <!--                <div class="post-preview">
