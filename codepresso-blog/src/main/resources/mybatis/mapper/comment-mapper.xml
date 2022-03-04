@@ -13,5 +13,7 @@
         INSERT INTO comment(post_id, comment_content, comment_username)
         VALUES (#{comment.post_id}, #{comment.comment_content}, #{comment.comment_username});
     </insert>
+
+
 </mapper>
 

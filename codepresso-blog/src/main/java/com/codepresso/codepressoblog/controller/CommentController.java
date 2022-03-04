@@ -42,6 +42,7 @@ public class CommentController {
     public String createComment(@RequestBody CommentRequestDto commentDto) {
         Comment comment = commentDto.getComment();
         commentService.saveComment(comment);
+
         return "success";
     }
 

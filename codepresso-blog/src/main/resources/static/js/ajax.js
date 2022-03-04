@@ -86,11 +86,20 @@ $(function(){
         var post_id = parseInt($("#post-id").val());
 
         $.ajax({
-
+            method: "GET",
+            url: "/comment?post_id=" + post_id + "&page=" + next_page,
+            data: {"page": next_page}
         })
-            .done(function(response) {
-
-                $(".comment-edit").hide();
+            .done(function (response){
+                for(var comments of response){
+                    $("#more-comment-button").append("<div class=\"comment_text\">" +
+                        "<a href=\"/comment/" + post_id + next_page + "\">" +
+                        "<div class=\"etc\">" + "<div class=\"name\">" +
+                        comments.username +
+                        "</div>\n</div>" +
+                        "<p>" +
+                        comments.content + "</p>");
+                }
             });
         $(this).attr("current-comment-page", next_page);
     });
@@ -101,10 +110,18 @@ $(function(){
         var post_id = $("#post-id").val();
 
         $.ajax({
-
+            method : "PUT",
+            url : "/comment",
+            data: JSON.stringify({
+                "post_id":post_id,
+                "username":username,
+                "content":content
+            }),
+            contentType: "application/json"
         })
-            .done(function(response) {
-
+            .done(function (response){
+                console.log("Post creation success!");
+                window.location.href = "/comment/" + id;
             });
     });
 
