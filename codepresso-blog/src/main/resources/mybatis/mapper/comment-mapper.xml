@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.codepresso.codepressoblog.mapper.CommentMapper">
+    <select id="findByPostIdAndPage" resultType="com.codepresso.codepressoblog.vo.Comment">
+        SELECT *
+        FROM COMMENT
+        WHERE post_id = #{post_id};
+    </select>
+
+    <insert id="save">
+        INSERT INTO comment(post_id, comment_content, comment_username)
+        VALUES (#{comment.post_id}, #{comment.comment_content}, #{comment.comment_username});
+    </insert>
+</mapper>
+

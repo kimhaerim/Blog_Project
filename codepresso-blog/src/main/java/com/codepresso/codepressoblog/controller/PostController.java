@@ -18,7 +18,7 @@ public class PostController {
     }
 
     @GetMapping("/post")
-    public List<PostResponseDto> getPostList(@RequestParam Integer page) {
+    public List<PostResponseDto> getPostList(@RequestParam(name="page") Integer page) {
         List<Post> posts = postService.getFindByPage(page, 3);
 
         List<PostResponseDto> PostResponseDtoList = new ArrayList<>();

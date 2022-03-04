@@ -1,6 +1,8 @@
 package com.codepresso.codepressoblog.controller;
 
+import com.codepresso.codepressoblog.service.CommentService;
 import com.codepresso.codepressoblog.service.PostService;
+import com.codepresso.codepressoblog.vo.Comment;
 import com.codepresso.codepressoblog.vo.Post;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,7 +18,7 @@ public class PostPageController {
     }
 
     @RequestMapping("/post/{id}")
-    public String getPostDetailPage(Model model, @PathVariable Integer id){
+    public String getPostDetailPage(Model model, @PathVariable(name="id") Integer id){
         Post post = postService.getPostById(id);
         model.addAttribute("post", post);
         return "post_detail";
@@ -33,12 +35,4 @@ public class PostPageController {
         model.addAttribute("post", post);
         return "post_edit";
     }
-
-//    @RequestMapping("/post/{id}")
-//    public String getPostDelete(Model model, @PathVariable Integer id){
-////        Post post = postService.getPostById(id);
-////        model.addAttribute("post", post);
-//        return "index";
-//    }
-
 }

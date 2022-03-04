@@ -81,6 +81,33 @@ $(function(){
             });
     });
 
+    $("#more-comment-button").click(function(){
+        var next_page = parseInt($(this).attr("current-comment-page")) + 1;
+        var post_id = parseInt($("#post-id").val());
+
+        $.ajax({
+
+        })
+            .done(function(response) {
+
+                $(".comment-edit").hide();
+            });
+        $(this).attr("current-comment-page", next_page);
+    });
+
+    $("#comment-save-button").click(function(){
+        var username = $("#comment-username").val();
+        var content = $("#comment-content").val();
+        var post_id = $("#post-id").val();
+
+        $.ajax({
+
+        })
+            .done(function(response) {
+
+            });
+    });
+
     $(".comment-edit").hide();
 
     $(".comment-edit-form-button").click(function(){
