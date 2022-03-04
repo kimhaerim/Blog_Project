@@ -33,4 +33,12 @@ public class PostPageController {
         model.addAttribute("post", post);
         return "post_edit";
     }
+
+//    @RequestMapping("/post/{id}")
+//    public String getPostDelete(Model model, @PathVariable Integer id){
+////        Post post = postService.getPostById(id);
+////        model.addAttribute("post", post);
+//        return "index";
+//    }
+
 }
