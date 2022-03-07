@@ -31,13 +31,6 @@ public class CommentController {
         return commentResponseDtos;
     }
 
-    @RequestMapping("/comment/{post_id}/{page}")
-    public String getCommentPage(Model model, @PathVariable Integer post_id, @PathVariable Integer page){
-        List<Comment> comments = commentService.getCommentList(post_id, 3, page);
-        model.addAttribute("comments", comments);
-        return "post_detail";
-    }
-
     @PostMapping("/comment")
     public String createComment(@RequestBody CommentRequestDto commentDto) {
         Comment comment = commentDto.getComment();

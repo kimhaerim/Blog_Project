@@ -6,7 +6,9 @@
     <select id="findByPostIdAndPage" resultType="com.codepresso.codepressoblog.vo.Comment">
         SELECT *
         FROM COMMENT
-        WHERE post_id = #{post_id};
+        WHERE post_id = #{post_id}
+        order by id desc
+        limit #{limit} offset #{offset};
     </select>
 
     <insert id="save">

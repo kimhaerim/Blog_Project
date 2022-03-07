@@ -87,23 +87,36 @@ $(function(){
 
         $.ajax({
             method: "GET",
-            url: "/comment?post_id=" + post_id + "&page=" + next_page,
-            data: {"page": next_page}
+            url: "/comment",
+            data: {
+                "page": next_page,
+                "post_id" : post_id
+            }
         })
             .done(function (response){
-                for(var comments of response){
-                    $("#more-comment-button").append("<div class=\"comment_text\">" +
-                        "<a href=\"/comment/" + post_id + next_page + "\">" +
-                        "<div class=\"etc\">" + "<div class=\"name\">" +
-                        comments.username +
-                        "</div>\n</div>" +
-                        "<p>" +
-                        comments.content + "</p>");
-                }
-            });
-        $(this).attr("current-comment-page", next_page);
-    });
+                    for(var comment of response) {
+                        $("#more-comments").append("<div class=\"comment_text\"><div class=\"etc\">" +
+                            "<div class=\"name\">" +
+                            comment.username +
+                            "</div></div><p>" +
+                            comment.content +
+                            "</p><div class=\"edit_btns\">" +
+                            "<button class=\"comment-edit-form-button\">수정</button>" +
+                            "<button class=\"comment-delete-button\">삭제</button></div>" +
+                            "<textarea class=\"edit comment-edit\" name=\"\" id=\"edit2\" cols=\"30\" rows=\"10\" placeholder=\"댓글을 입력해주세요\">" +
+                            comment.content +
+                            "</textarea><div class=\"save_btns comment-edit\">" +
+                            "<button class=\"comment-edit-cancel-button\">취소</button>" +
+                            "<button class=\"save comment-edit-button\">저장하기</button></div>" +
+                            "<input type=\"hidden\" class=\"comment-id\" value=\"" +
+                            comment.id +
+                            "\"></div>\"");
+                    }
 
+                    $(".comment-edit").hide();
+                });
+                $(this).attr("current-comment-page", next_page);
+            });
     $("#comment-save-button").click(function(){
         var username = $("#comment-username").val();
         var content = $("#comment-content").val();
