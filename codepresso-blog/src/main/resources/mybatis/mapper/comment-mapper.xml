@@ -6,15 +6,21 @@
     <select id="findByPostIdAndPage" resultType="com.codepresso.codepressoblog.vo.Comment">
         SELECT *
         FROM COMMENT
-        WHERE post_id = #{post_id}
+        WHERE post_id = #{postId}
         order by id desc
-        limit #{limit} offset #{offset};
+        LIMIT #{limit} offset #{offset};
     </select>
 
     <insert id="save">
-        INSERT INTO comment(post_id, comment_content, comment_username)
-        VALUES (#{comment.post_id}, #{comment.comment_content}, #{comment.comment_username});
+        INSERT INTO comment(post_id, content, username)
+        VALUES (#{comment.postId}, #{comment.content}, #{comment.username});
     </insert>
+
+    <update id="update">
+        UPDATE comment
+        SET content = #{comment.content}
+        WHERE id = #{comment.id}
+    </update>
 
 
 </mapper>

@@ -22,8 +22,9 @@ public class CommentController {
     }
 
     @GetMapping("/comment")
-    public List<CommentResponseDto> getComment(@RequestParam("post_id") Integer post_id, @RequestParam Integer page){
-        List<Comment> comments = commentService.getCommentList(post_id, 3, page);
+    public List<CommentResponseDto> getCommentListByPost(@RequestParam("post_id") Integer postId, @RequestParam Integer page){
+        List<Comment> comments = commentService.getCommentListByPostIdAndPage(postId, page, 3);
+
         List<CommentResponseDto> commentResponseDtos = new ArrayList<>();
         for(Comment comment : comments)
             commentResponseDtos.add(new CommentResponseDto(comment));

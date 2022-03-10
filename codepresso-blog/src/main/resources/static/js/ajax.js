@@ -82,6 +82,7 @@ $(function(){
     });
 
     $("#more-comment-button").click(function(){
+        console.log("clicked More")
         var next_page = parseInt($(this).attr("current-comment-page")) + 1;
         var post_id = parseInt($("#post-id").val());
 
@@ -117,24 +118,26 @@ $(function(){
                 });
                 $(this).attr("current-comment-page", next_page);
             });
+
     $("#comment-save-button").click(function(){
+        console.log("clicked");
         var username = $("#comment-username").val();
         var content = $("#comment-content").val();
         var post_id = $("#post-id").val();
 
         $.ajax({
-            method : "PUT",
+            method : "POST",
             url : "/comment",
             data: JSON.stringify({
-                "post_id":post_id,
+                "postId":post_id,
                 "username":username,
                 "content":content
             }),
             contentType: "application/json"
         })
             .done(function (response){
-                console.log("Post creation success!");
-                window.location.href = "/comment/" + id;
+                console.log("Comment creation success!");
+                window.location.reload();
             });
     });
 

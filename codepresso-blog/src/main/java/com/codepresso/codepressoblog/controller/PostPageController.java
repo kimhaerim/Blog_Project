@@ -19,14 +19,10 @@ public class PostPageController {
     private PostService postService;
     private CommentService commentService;
 
-//    //public PostPageController(PostService postService){
-//        this.postService = postService;
-//    }
-
     @RequestMapping("/post/{id}")
     public String getPostDetailPage(Model model, @PathVariable Integer id){
         Post post = postService.getPostById(id);
-        List<Comment> comments = commentService.getCommentList(id, 3, 1);
+        List<Comment> comments = commentService.getCommentListByPostIdAndPage(id, 1, 3);
 
         model.addAttribute("post", post);
         model.addAttribute("comments", comments);

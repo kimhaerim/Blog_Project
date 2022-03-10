@@ -11,6 +11,7 @@ import java.util.List;
 
 @Mapper
 public interface CommentMapper {
-    List<Comment> findByPostIdAndPage(@Param("post_id") Integer post_id, @Param("limit") Integer limit, @Param("offset") Integer offset);
+    List<Comment> findByPostIdAndPage(@Param("postId") Integer postId, @Param("limit") Integer limit, @Param("offset") Integer offset);
     Integer save(@Param("comment") Comment comment);
+    Integer update(@Param("comment") Comment comment);
 }
