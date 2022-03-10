@@ -42,6 +42,8 @@ public class CommentController {
 
     @PutMapping("/comment")
     public String updateComment(@RequestBody CommentRequestDto commentDto){
-        return null;
+        Comment comment = commentDto.getComment();
+        commentService.updateComment(comment);
+        return "success";
     }
 }
