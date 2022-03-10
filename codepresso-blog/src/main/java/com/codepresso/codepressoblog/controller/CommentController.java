@@ -46,4 +46,10 @@ public class CommentController {
         commentService.updateComment(comment);
         return "success";
     }
+
+    @DeleteMapping("/comment")
+    public String deleteComment(Integer id){
+        commentService.deleteComment(id);
+        return "success";
+    }
 }

@@ -29,4 +29,9 @@ public class CommentService {
         Integer result = commentMapper.update(comment);
         return result == 1;
     }
+
+    public boolean deleteComment(Integer id){
+        Integer result = commentMapper.delete(id);
+        return result == 1;
+    }
 }
